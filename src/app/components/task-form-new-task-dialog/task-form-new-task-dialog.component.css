@@ -1,0 +1,13 @@
+h1 {
+  color: rgba(255, 68, 0, 0.878);
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}

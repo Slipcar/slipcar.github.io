@@ -1,0 +1,30 @@
+.title {
+  font-weight: bold;
+}
+.title-edit {
+  padding-left: 3%;
+}
+.title-conclusion {
+  padding-left: 11%;
+}
+.title-conc {
+  padding-left: 6.5%;
+}
+
+table {
+  width: 100%;
+}
+
+h1 {
+  color: rgba(255, 68, 0, 0.878);
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}

@@ -1,0 +1,69 @@
+<!-- Tela principal que contém a lista de tarefas || Pertence ao componente task -->
+<!-- Título princial Navbar -->
+<nav class="navbar navbar-dark">
+  <a class="navbar-brand nav-title">Desafio Supero - Task List</a>
+
+  <!-- Botão que abre o formulário de cadastro de uma nova Task -->
+  <button class="btn btn-color active my-2 my-sm-2" (click)="newTask()">
+    Nova Tarefa
+  </button>
+</nav>
+
+<div class="container mt-4">
+  <!-- Início da lista de Tasks -->
+  <h1>Lista de Tarefas</h1>
+  <hr />
+  <div class="row">
+    <div class="col-md-15">
+      <div class="row"></div>
+
+      <!-- Função que faz o drag and drop na lista -->
+      <div cdkDropList class="row" (cdkDropListDropped)="dragDrop($event)">
+        <li *ngFor="let task of tasks" class="
+            list-group-item
+            d-flex
+            justify-content-between
+            align-items-center
+          " cdkDrag>
+
+          <!-- Risca a task caso esteja marcada como concluída -->
+          <div class="{{ task.done ? 'done' : '' }}">
+
+            <!-- Titulo da Task -->
+            <div class="title">
+              {{ task.title }}
+            </div>
+
+            <!-- Dados da Task -->
+            <div>
+              <span class="title-sub">Descrição: </span>
+              <span>{{ task.description }}</span>
+              <span class="title-sub"><br />Criação: </span>
+              <span class="text-padding">{{ task.createdDate }}</span>
+              <span class="title-sub"><br />Edição: </span>
+              <span class="text-padding">{{ task.editedDate }}</span>
+              <span class="title-sub"><br />Conclusão: </span>
+              <span>{{ task.doneDate }}</span>
+            </div>
+          </div>
+
+          <!-- Grupo de Botões -->
+          <!-- Botão Concluir -->
+          <div class="btn-group">
+            <button class="btn btn-success" [hidden]="task.done" (click)="doneTask(task)">
+              Concluir
+            </button>
+            <!-- Botão Editar -->
+            <button class="btn btn-warning" (click)="editTask(task)">
+              Editar
+            </button>
+            <!-- Botão Excluir -->
+            <button class="btn btn-danger" (click)="deleteTask(task)">
+              Excluir
+            </button>
+          </div>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>

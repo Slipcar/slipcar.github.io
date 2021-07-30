@@ -1,0 +1,50 @@
+<!-- Formulário de cadastro de nova Task || Pertence ao componente task-form-new-task-dialog -->
+<h1 mat-dialog-title>Nova Tarefa</h1>
+
+<div mat-dialog-content>
+  <!-- Início do formulário -->
+  <form class="form" [formGroup]="form">
+    <mat-form-field class="full-width">
+      <!-- Título da Task -->
+      <mat-label>Título da Tarefa</mat-label>
+
+      <!-- Limita o número máximo de caracteres do título em 30 -->
+      <input matInput #input maxlength="30" formControlName="title" required />
+      <mat-hint align="end">{{ input.value?.length }} / 30</mat-hint>
+    </mat-form-field>
+
+    <!-- Descrição da Task -->
+    <mat-form-field class="full-width">
+      <mat-label>Descrição da Tarefa</mat-label>
+      <textarea
+        rows="3"
+        matInput
+        #input
+        maxlength="128"
+        formControlName="description"
+        required
+      ></textarea>
+
+      <!-- Limita o número máximo de caracteres do input em 128 -->
+      <mat-hint align="end">{{ input.value?.length }} / 128</mat-hint>
+    </mat-form-field>
+  </form>
+  <!-- Fim dos campos do formulário -->
+</div>
+
+<!-- Botões -->
+<div mat-dialog-actions>
+  <!-- Botão Cancelar -->
+  <button mat-button (click)="onCancel()">Cancelar</button>
+
+  <!-- Botão Salvar -->
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!form.get('title')!.valid || !form.get('description')!.valid"
+    (click)="onSaveNewTask()"
+  >
+    Salvar
+  </button>
+</div>

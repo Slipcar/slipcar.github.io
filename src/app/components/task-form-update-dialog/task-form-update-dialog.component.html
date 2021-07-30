@@ -1,0 +1,80 @@
+<!-- Formulário de edição de uma Task || Pertence ao componente task-form-update-dialog -->
+<h1 mat-dialog-title>Editar Tarefa</h1>
+
+<div mat-dialog-content></div>
+
+<!-- Tabela que contém dados de edição da Task -->
+<!-- Cabeçalho de títulos -->
+<table mat-table class="mat-elevation-z1">
+  <th class="title">Criação</th>
+  <th class="title-edit">Edição</th>
+  <th class="title-conclusion">Conclusão</th>
+</table>
+
+<!-- valores de data e hora -->
+<table>
+  <td>
+    <!-- data e hora de criação da Task -->
+    <div>{{ taskEdit.createdDate }}</div>
+  </td>
+  <td>
+    <!-- data e hora de edição da Task -->
+    <div class="title-edit">{{ taskEdit.editedDate }}</div>
+  </td>
+  <td>
+    <!-- data e hora de conclusão da Task -->
+    <div class="title-conc">{{ taskEdit.doneDate }}</div>
+  </td>
+</table>
+<hr />
+
+<!-- Início do formulário de edição da Task -->
+<div mat-dialog-content>
+  <form class="form">
+    <mat-form-field class="full-width">
+      <!-- Título da tarefa -->
+      <mat-label>Título da Tarefa</mat-label>
+
+      <input
+        matInput
+        maxlength="30"
+        name="title"
+        value="{{ taskEdit.title }}"
+        [(ngModel)]="taskEdit.title"
+        required
+      />
+      <!-- Limita o número máximo de caracteres do título em 30 -->
+      <mat-hint align="end">{{ taskEdit.title.length }} / 30</mat-hint>
+    </mat-form-field>
+
+    <!-- Descrição da Task -->
+    <mat-form-field class="full-width">
+      <mat-label>Descrição da Tarefa</mat-label>
+
+      <textarea
+        rows="3"
+        matInput
+        maxlength="128"
+        value="{{ taskEdit.description }}"
+        name="description"
+        [(ngModel)]="taskEdit.description"
+        required
+      ></textarea>
+
+      <!-- Limita o número máximo de caracteres do input em 128 -->
+      <mat-hint align="end">{{ taskEdit.description.length }} / 128</mat-hint>
+    </mat-form-field>
+  </form>
+  <!-- Fim dos campos do formulário -->
+</div>
+
+<!-- Botões -->
+<div mat-dialog-actions>
+  <!-- Botão Cancelar -->
+  <button mat-button (click)="onCancel()">Cancelar</button>
+
+  <!-- Botão Editar -->
+  <button mat-raised-button color="primary" (click)="onEditTask(taskEdit)">
+    Editar
+  </button>
+</div>
